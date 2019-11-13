@@ -1146,7 +1146,7 @@ pre .javascript .function {
 }
 .links-of-author a::before,
 .links-of-author span.exturl::before {
-  background: #c147a3;
+  background: #0b58c3;
   border-radius: 50%;
   content: ' ';
   display: inline-block;
@@ -1548,6 +1548,9 @@ pre .javascript .function {
     margin-left: 20px;
     margin-right: 20px;
   }
+}
+.posts-collapse .post-meta time {
+  border: 0 !important;
 }
 .posts-collapse .collection-title {
   font-size: 1.125em;
