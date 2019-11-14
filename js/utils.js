@@ -32,7 +32,11 @@ NexT.utils = {
         $imageWrapLink.attr('title', imageTitle).attr('data-caption', imageTitle);
       }
     });
+  
 
+  
+
+    try {
     $.fancybox.defaults.hash = false;
     $('.fancybox').fancybox({
       loop   : true,
@@ -42,6 +46,9 @@ NexT.utils = {
         }
       }
     });
+  } catch {
+    console.log("图片预览异常捕获")
+    }
   },
 
   registerExtURL: function() {
@@ -163,7 +170,7 @@ NexT.utils = {
         readingProgressBar.style.width = scrollPercent;
       }
     });
-
+  
     backToTop && backToTop.addEventListener('click', () => {
       window.anime({
         targets  : [document.documentElement, document.body],
