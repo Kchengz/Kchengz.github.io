@@ -38,8 +38,8 @@
       hits: {"per_page":10},
       labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
     },
-    localsearch: {"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
-    path: '',
+    localsearch: {"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},
+    path: 'search.xml',
     motion: {"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},
     translation: {
       copy_button: '复制',
@@ -50,13 +50,13 @@
   };
 </script>
 
-  <meta name="description" content="为何搭建博客在2017年年底时，我就准备搭建一个博客，主要是作为一个vue实战项目练手（刚好学习了vue）以及作为实习面试的作品，然后利用业余时间完成自己一个版的博客，部署到了阿里云上面 由于部署在阿里云上面，每年是需要支付服务器、域名的费用。所以当我发现hexo框架时，所以重新使用hexo重新搭建了一个博客，只需要部署到github上面就行了，图片上传到七牛云，降低维护成本，因为github访问">
+  <meta name="description" content="为何搭建博客在2017年年底时，我就准备搭建一个博客，主要是作为一个vue实战项目练手（刚好学习了vue）以及作为实习面试的作品，然后利用业余时间完成自己一个版的博客，部署到了阿里云上面">
 <meta name="keywords" content="博客,生活点滴">
 <meta property="og:type" content="article">
 <meta property="og:title" content="关于搭建博客那些事">
 <meta property="og:url" content="https:&#x2F;&#x2F;kcz66.gitee.io&#x2F;2019&#x2F;11&#x2F;11&#x2F;old-blog&#x2F;index.html">
 <meta property="og:site_name" content="橙子大大">
-<meta property="og:description" content="为何搭建博客在2017年年底时，我就准备搭建一个博客，主要是作为一个vue实战项目练手（刚好学习了vue）以及作为实习面试的作品，然后利用业余时间完成自己一个版的博客，部署到了阿里云上面 由于部署在阿里云上面，每年是需要支付服务器、域名的费用。所以当我发现hexo框架时，所以重新使用hexo重新搭建了一个博客，只需要部署到github上面就行了，图片上传到七牛云，降低维护成本，因为github访问">
+<meta property="og:description" content="为何搭建博客在2017年年底时，我就准备搭建一个博客，主要是作为一个vue实战项目练手（刚好学习了vue）以及作为实习面试的作品，然后利用业余时间完成自己一个版的博客，部署到了阿里云上面">
 <meta property="og:locale" content="zh-CN">
 <meta property="og:image" content="http:&#x2F;&#x2F;cdn.kcz66.com&#x2F;pc%E9%A6%96%E9%A1%B5.jpg">
 <meta property="og:image" content="http:&#x2F;&#x2F;cdn.kcz66.com&#x2F;pc%E5%85%B3%E4%BA%8E%E6%88%91.jpg">
@@ -175,9 +175,34 @@
     <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>归档</a>
 
   </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
   </ul>
 
 </nav>
+  <div class="site-search">
+    <div class="popup search-popup">
+    <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocorrect="off" autocapitalize="none"
+           placeholder="搜索..." spellcheck="false"
+           type="text" id="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result"></div>
+
+</div>
+<div class="search-pop-overlay"></div>
+
+  </div>
 </div>
     </header>
 
@@ -240,6 +265,27 @@
             </span>
 
           
+            <span class="post-meta-item" title="阅读次数" id="busuanzi_container_page_pv" style="display: none;">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-eye"></i>
+              </span>
+              <span class="post-meta-item-text">阅读次数：</span>
+              <span id="busuanzi_value_page_pv"></span>
+            </span>
+  
+  <span class="post-meta-item">
+    
+      <span class="post-meta-item-icon">
+        <i class="fa fa-comment-o"></i>
+      </span>
+      <span class="post-meta-item-text">Valine：</span>
+    
+    <a title="valine" href="/2019/11/11/old-blog/#comments" itemprop="discussionUrl">
+      <span class="post-comments-count valine-comment-count" data-xid="/2019/11/11/old-blog/" itemprop="commentCount"></span>
+    </a>
+  </span>
+  
+  
 
         </div>
       </header>
@@ -250,7 +296,7 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <h2 id="为何搭建博客"><a href="#为何搭建博客" class="headerlink" title="为何搭建博客"></a>为何搭建博客</h2><p>在2017年年底时，我就准备搭建一个博客，主要是作为一个vue实战项目练手（刚好学习了vue）以及作为实习面试的作品，然后利用业余时间完成自己一个版的博客，部署到了阿里云上面</p>
+        <h2 id="为何搭建博客"><a href="#为何搭建博客" class="headerlink" title="为何搭建博客"></a>为何搭建博客</h2><p>在2017年年底时，我就准备搭建一个博客，主要是作为一个vue实战项目练手（刚好学习了vue）以及作为实习面试的作品，然后利用业余时间完成自己一个版的博客，部署到了阿里云上面</p><a id="more"></a>
 <p>由于部署在阿里云上面，每年是需要支付服务器、域名的费用。所以当我发现hexo框架时，所以重新使用hexo重新搭建了一个博客，只需要部署到github上面就行了，图片上传到七牛云，降低维护成本，因为github访问速度太慢了，后面又将项目重新部署在gitee</p>
 <p>以前弄博客是为了练习和当作面试的一个作品，现在写博客主要是为了记录和分享自己所学的东西</p>
 <h2 id="记录一下旧的blog页面"><a href="#记录一下旧的blog页面" class="headerlink" title="记录一下旧的blog页面"></a>记录一下旧的blog页面</h2><hr>
@@ -321,6 +367,7 @@
 
           </div>
           
+    <div class="comments" id="comments"></div>
 
         </div>
           
@@ -361,20 +408,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-count">5</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">3</span>
+        <span class="site-state-item-count">5</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">6</span>
+        <span class="site-state-item-count">8</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -415,6 +462,26 @@
 </div>
 
         
+<div class="busuanzi-count">
+  <script async src="https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script>
+    <span class="post-meta-item" id="busuanzi_container_site_uv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-user"></i>
+      </span>
+      <span class="site-uv" title="总访客量">
+        <span id="busuanzi_value_site_uv"></span>
+      </span>
+    </span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item" id="busuanzi_container_site_pv" style="display: none;">
+      <span class="post-meta-item-icon">
+        <i class="fa fa-eye"></i>
+      </span>
+      <span class="site-pv" title="总访问量">
+        <span id="busuanzi_value_site_pv"></span>
+      </span>
+    </span>
+</div>
 
 
 
@@ -433,6 +500,8 @@
   </div>
 
   
+  
+  <script color='0,0,255' opacity='0.5' zIndex='-1' count='99' src="/lib/canvas-nest/canvas-nest.min.js"></script>
   <script src="/lib/anime.min.js"></script>
   <script src="/lib/velocity/velocity.min.js"></script>
   <script src="/lib/velocity/velocity.ui.min.js"></script>
@@ -447,6 +516,8 @@
 
 
 
+  <script src="/js/local-search.js"></script>
+
 
 
 
@@ -462,6 +533,33 @@
   
 
   
+
+
+<script>
+NexT.utils.getScript('//unpkg.com/valine/dist/Valine.min.js', () => {
+  var GUEST = ['nick', 'mail', 'link'];
+  var guest = 'nick,mail,link';
+  guest = guest.split(',').filter(item => {
+    return GUEST.includes(item);
+  });
+  new Valine({
+    el: '#comments',
+    verify: false,
+    notify: false,
+    appId: 'pivlGCvoyySr5dXqCFrIkVwX-gzGzoHsz',
+    appKey: 'ml0fP5HoWyjhb960Kw6I4bPt',
+    placeholder: "ヾﾉ≧∀≦)o来啊，快活啊!",
+    avatar: 'mm',
+    meta: guest,
+    pageSize: '10' || 10,
+    visitor: false,
+    lang: '' || 'zh-cn',
+    path: location.pathname,
+    recordIP: false,
+    serverURLs: ''
+  });
+}, window.Valine);
+</script>
 
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/font-awesome/css/font-awesome.min.css">
   <script src="https://cdn.jsdelivr.net/npm/jquery/dist/jquery.min.js"></script>
