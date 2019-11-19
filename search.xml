@@ -4,6 +4,35 @@
   
     
     <entry>
+      <title>第一个开源项目 k-form-design</title>
+      <link href="/2019/11/20/record-k-form-design/"/>
+      <url>/2019/11/20/record-k-form-design/</url>
+      
+        <content type="html"><![CDATA[<h2 id="项目介绍"><a href="#项目介绍" class="headerlink" title="项目介绍"></a>项目介绍</h2><p>这是一个基于vue和ant-design-vue实现的表单设计器，主要功能是可以通过拖拽生成表单，最后能导出相应的json数据，并且能通过导出的json数据构建成表单</p><a id="more"></a><h2 id="为何要写这个项目"><a href="#为何要写这个项目" class="headerlink" title="为何要写这个项目"></a>为何要写这个项目</h2><p>因为我们这边需要开发工作流，而我们没有自己的表单设计器，本来是有打算买一个第三方的表单设计器来用的，但是我个人觉得第三方可扩展性不能满足我们这边的需要，而且需要额外安装一个UI（原框架使用ant-design-vue），所以就决定自己写一个表单设计器</p><h2 id="心得"><a href="#心得" class="headerlink" title="心得"></a>心得</h2><p>这是我做的第一个npm组件，写在博客这里记录一下</p><p>2019-11-20</p><p>因为是第一次将vue的组件打包并上传到npm上，当我成功通过 npm install 安装时，我内心也是十分激动的，为了打包这个组件，我去网上查了很多资料，也学到了很多东西，我打算后期继续维护更新这个项目</p><p><a href="https://github.com/Kchengz/k-form-design" target="_blank" rel="noopener">开源地址</a><br><a href="https://www.npmjs.com/package/k-form-design" target="_blank" rel="noopener">npm包地址</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 日志 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 日志 </tag>
+            
+            <tag> 开源 </tag>
+            
+            <tag> vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>vue学习笔记2</title>
       <link href="/2019/11/16/vue-note2/"/>
       <url>/2019/11/16/vue-note2/</url>
