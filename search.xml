@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>vue-cli3.x兼容ie</title>
+      <link href="/2020/03/25/vue-cli-ie/"/>
+      <url>/2020/03/25/vue-cli-ie/</url>
+      
+        <content type="html"><![CDATA[<p>问题vue项目不兼容ie</p><p>要求：ie兼容 &gt;= 9</p><p>环境：vue cli3以上版本搭建的项目</p><h3 id="Installation"><a href="#Installation" class="headerlink" title="Installation"></a>Installation</h3><a id="more"></a><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">npm install babel/polyfill --save</span><br><span class="line"># or</span><br><span class="line">yarn add babel/polyfill</span><br></pre></td></tr></table></figure><h3 id="修改babel-config-js文件"><a href="#修改babel-config-js文件" class="headerlink" title="修改babel.config.js文件"></a>修改<code>babel.config.js</code>文件</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">  presets: [</span><br><span class="line">    <span class="string">'@vue/app'</span>,</span><br><span class="line">    <span class="comment">// 兼容配置</span></span><br><span class="line">    [</span><br><span class="line">      <span class="string">'@babel/preset-env'</span>,</span><br><span class="line">      &#123;</span><br><span class="line">        <span class="string">'useBuiltIns'</span>: <span class="string">'entry'</span></span><br><span class="line">      &#125;</span><br><span class="line">    ]</span><br><span class="line">  ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure><h3 id="main-js文件（项目入口）"><a href="#main-js文件（项目入口）" class="headerlink" title="main.js文件（项目入口）"></a><code>main.js</code>文件（项目入口）</h3><figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 在顶部引入@babel/polyfill处理兼容,以确保首先加载polyfill</span></span><br><span class="line"><span class="keyword">import</span> <span class="string">'@babel/polyfill'</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">import</span> Vue <span class="keyword">from</span> <span class="string">'vue'</span></span><br></pre></td></tr></table></figure><p>重启项目如果没有报错，就已经完成了，如果在编译时出现以下错误,</p><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">To install them, you can run: npm install --save core-js/modules/es6.array.copy-within core-js/modules/es6.array.fill core-js/modules/es6.array.find core-js/modules/es6.array.find-index core-js/modules/es6.array.from core-js/modules/es6.array.iterator core-js/modules/es6.array.of core-js/modules/es6.array.species core-js/modules/es6.date.to-primitive core-js/modules/es6.function.has-instance core-js/modules/es6.function.name core-js/modules/es6.map core-js/modules/es6.math.acosh core-js/modules/es6.math.asinh core-js/modules/es6.math.atanh core-js/modules/es6.math.cbrt core-js/modules/es6</span><br></pre></td></tr></table></figure><p>这是因为最新的 vue-cli 版本，core-js是3.x的版本，而这个版本中，对那些polly补丁包进行了整理，所以，在项目的根目录，<code>yarn add core-js@2.6.9 --save</code>安装这个版本就没问题</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> vue </category>
+          
+          <category> 兼容 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> vue </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>monaco-editor 在 vue-cli3 使用</title>
       <link href="/2020/01/05/monaco-editor/"/>
       <url>/2020/01/05/monaco-editor/</url>
